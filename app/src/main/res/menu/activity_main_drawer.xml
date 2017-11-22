@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-<!--        <item
+       <item
             android:id="@+id/nav_gen"
             android:icon="@drawable/gener"
-            android:title="一般情况" />-->
+            android:title="一般情况" />
         <item
             android:icon="@drawable/lung"
             android:title="呼吸系统" />

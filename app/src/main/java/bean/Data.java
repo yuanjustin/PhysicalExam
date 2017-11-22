@@ -43,10 +43,9 @@ public class Data
                         String[] DFiles = mainActivity.getResources().getAssets().list(system + "/" + methods);
                         //三级文件
                         for (String card : DFiles) {
-                            if (card.contains(".htm")) {
-                                card = card.substring(0, card.indexOf("."));
+
                                 systems.get(systems.size() - 1).getMethods().get(systems.get(systems.size() - 1).getMethods().size() - 1).add(new DetailBean(system + "/" + methods + "/" + card, card, mainActivity));
-                            }
+
                         }
                         //}
 

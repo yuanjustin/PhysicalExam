@@ -2,9 +2,6 @@ package bean;
 
 import com.Justin.Yuan.ClinicalSkillApp.MainActivity;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 public class DetailBean
 {
     public String getDetail() {
@@ -39,16 +36,7 @@ public class DetailBean
 
         this.detail=detail;
         this.title=title;
-        InputStream in = null;
-        try {
-            in = mainActivity.getResources().getAssets().open(detail+".txt");
-            int length = in.available();
-            byte [] buffer = new byte[length];
-            in.read(buffer);
-             detailText = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 

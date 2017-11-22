@@ -58,13 +58,13 @@ public class CardModel{
          // 网页获取图片
         InputStream fs = null;
         try {
-            String[] files = mainActivity.getResources().getAssets().list(htmlName+".files");
+            String[] files = mainActivity.getResources().getAssets().list(htmlName+"/pic");
             if(files.length!=0){
                 String file="";
                 for(String f:files){
                     if(f.contains(".jpg")&& file==""){file=f;}
                 }
-                fs = mainActivity.getResources().getAssets().open(htmlName+".files/"+file);
+                fs = mainActivity.getResources().getAssets().open(htmlName+"/pic/"+file);
                 BufferedInputStream bs = new BufferedInputStream(fs);
                 pic = BitmapFactory.decodeStream(bs);
             }
@@ -77,11 +77,11 @@ public class CardModel{
         //  content通过网页产生
         try{
 
-            InputStream in = mainActivity.getResources().getAssets().open(htmlName+".txt");
+            InputStream in = mainActivity.getResources().getAssets().open(htmlName+"/1.md");
             int length = in.available();
             byte [] buffer = new byte[length];
             in.read(buffer);
-            String str = new String(buffer, "gb2312");
+            String str = new String(buffer, "utf-8");
 //            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
 //            Matcher m = p.matcher(str);
 //            str=m.replaceAll("");

@@ -10,9 +10,7 @@ import android.widget.LinearLayout;
 
 import com.Justin.Yuan.ClinicalSkillApp.MainActivity;
 import com.Justin.Yuan.ClinicalSkillApp.R;
-
-import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
-import org.sufficientlysecure.htmltextview.HtmlTextView;
+import com.mukesh.MarkdownView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,8 +24,7 @@ import model.DetailModel;
 public class DetailView extends Fragment {
     private  MainActivity mainActivity;
     DetailModel detailModel;
-    HtmlTextView htmlTextView;
-
+    MarkdownView markdownView;
     public DetailView(MainActivity mainActivity) {
         this.mainActivity=mainActivity;
     }
@@ -39,9 +36,9 @@ public class DetailView extends Fragment {
 //        transaction.commit();
         this.detailModel=detailModel;
         // 装载web
-        if(htmlTextView!=null){
+        if(markdownView!=null){
 
-                htmlTextView.setHtml(readAssetsTxt(mainActivity,detailModel.getHtml()+".htm"), new HtmlHttpImageGetter(htmlTextView));
+            markdownView.loadMarkdownFromAssets(detailModel.getHtml());
 
         }
     }
@@ -51,7 +48,7 @@ public class DetailView extends Fragment {
                              Bundle savedInstanceState) {
         LinearLayout recyclerView = (LinearLayout) inflater.inflate(
                 R.layout.detail, container, false);
-        htmlTextView = (HtmlTextView) recyclerView.findViewById(R.id.html_text);
+        markdownView = (MarkdownView) recyclerView.findViewById(R.id.markdown_view);
 //// 设置可以支持缩放
 //        webView.getSettings().setSupportZoom(true);
 //// 设置出现缩放工具
@@ -84,7 +81,7 @@ public class DetailView extends Fragment {
             is.read(buffer);
             is.close();
             // Convert the buffer into a string.
-            String text = new String(buffer, "gb2312");
+            String text = new String(buffer, "utf-8");
             // Finally stick the string into the text view.
             return text;
         } catch (IOException e) {
